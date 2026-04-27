@@ -1,0 +1,14 @@
+--- File Transfer Log ---
+
+1. Upload File:
+   Command: scp test-file.txt bootcamp-web:~/
+   Status: Success
+
+2. Download File:
+   Command: scp bootcamp-web:~/instance-info.txt ./downloaded-info.txt
+   Note: Initially failed due to missing file, created file on instance then successfully downloaded.
+
+3. Upload Directory:
+   Command: scp -r my-website bootcamp-web:~/
+   Verification: Ran 'ls -la ~/my-website/' via SSH.
+   Result: index.html and style.css present on instance.

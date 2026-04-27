@@ -30,6 +30,11 @@ The following rules were applied to the security group to ensure secure access:
 
 ---
 
+##  Security group testing results
+gl@gl-ubuntu-24:~$ curl -I https://3.125.114.206
+curl: (7) Failed to connect to 3.125.114.206 port 443 after 27 ms: Couldn't connect to server
+
+
 ## 📸 Screenshots & Evidence
 
 ![Running Instance](screenshots/01-instance-running.png)
@@ -37,4 +42,8 @@ The following rules were applied to the security group to ensure secure access:
 ![SSH Terminal](screenshots/03-ssh-connection.png)
 ![browser](screenshots/04-web-server-browser.png)
 ![detail](screenshots/05-instance-details.png)
+![SSH](screenshots/06-ssh-config-working.png)
+![SG](screenshots/07-security-group-edit.png)
+![SCP](screenshots/08-scp-file-transfer.png)
+
 

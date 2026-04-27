@@ -1,0 +1,22 @@
+--- Security Test Results ---
+Date: 2026-04-27
+Instance Public IP: 3.125.114.206
+
+1. SSH Access (from Local): 
+   Result: Success via 'ssh bootcamp-web'
+
+2. HTTP Access (Port 80):
+   Command: curl -I http://3.125.114.206
+   Result: HTTP/1.1 200 OK (Allowed)
+
+3. ICMP Protocol (Ping):
+   Command: ping 3.125.114.206
+   Result: 100% packet loss (Blocked as expected)
+
+4. Database Port (Port 3306):
+   Command: nc -zv 3.125.114.206 3306
+   Result: nc: connect to 3.125.114.206 port 3306 (tcp) failed: Connection timed out
+
+Test 5: HTTPS Support (Port 443)：
+    Command: curl -I https://3.125.114.206
+    Result: Failed to connect / Connection refused.

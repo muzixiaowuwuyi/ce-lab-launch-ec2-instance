@@ -1,0 +1,31 @@
+# SSH Daemon Configuration Audit - Lab M2.02
+# Date: 2026-04-27
+# Instance: ip-172-31-44-66
+
+## 1. Key Security Settings Check
+- PasswordAuthentication: no
+  (Status: PASS. Password login is disabled, forcing secure key-based authentication.)
+
+- PermitRootLogin: [Not explicitly set in sshd_config]
+  (Status: PASS. In Amazon Linux, this defaults to 'prohibit-password' or 'no', preventing direct root access via password.)
+
+- PubkeyAuthentication: [Not explicitly set in sshd_config]
+  (Status: PASS. Defaults to 'yes', allowing the use of SSH keys.)
+
+## 2. Active Configuration (Non-commented lines)
+The following active configurations were retrieved using: 
+'sudo cat /etc/ssh/sshd_config | grep -v "^#" | grep -v "^$"'
+
+Include /etc/ssh/sshd_config.d/*.conf
+AuthorizedKeysFile      .ssh/authorized_keys
+PasswordAuthentication no
+PermitEmptyPasswords no
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
+AuthorizedKeysCommand /opt/aws/bin/eic_run_authorized_keys %u %f
+AuthorizedKeysCommandUser ec2-instance-connect
+
+## 3. Summary of Findings
+The SSH server is correctly hardened:
+1. It does not allow password-based logins, which eliminates brute-force attack risks.
+2. It uses 'ec2-instance-connect' for managed access, providing an extra layer of AWS-native security.
+3. A backup of the configuration file was created at /etc/ssh/sshd_config.backup before auditing.

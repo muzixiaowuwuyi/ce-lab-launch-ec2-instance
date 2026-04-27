@@ -1,0 +1,6 @@
+Inbound Rules:
+SSH	TCP	22	178.27.203.22/32	SSH from my IP
+HTTP	TCP	80	0.0.0.0/0	Public HTTP access
+
+Outbound Rules:
+IPv4    All traffic     All    All    0.0.0.0/0
